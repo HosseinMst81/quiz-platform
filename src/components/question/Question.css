@@ -1,0 +1,7 @@
+.question {
+    font-family: var(--font-montserrat);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.02em;
+}

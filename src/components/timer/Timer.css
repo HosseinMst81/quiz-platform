@@ -1,0 +1,14 @@
+/* ─── Timer ──────────────────────────────────────────────────── */
+.timer {
+  margin-left: auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-surface-text);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  padding: 1rem 2.4rem;
+  border-radius: var(--radius-full);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+}

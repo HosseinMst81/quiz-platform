@@ -1,0 +1,182 @@
+/* ─────────────────────────────────────────────────────────────
+   QUIZ COMPLETE SCREEN
+───────────────────────────────────────────────────────────── */
+.complete-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 440px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.complete-screen--ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Burst rings */
+.complete-burst {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.complete-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  animation: complete-ring-expand 2.4s ease-out forwards;
+}
+
+.complete-ring--1 {
+  width: 160px;
+  height: 160px;
+  animation-delay: 0.1s;
+}
+
+.complete-ring--2 {
+  width: 280px;
+  height: 280px;
+  border-color: rgba(56, 189, 248, 0.08);
+  animation-delay: 0.3s;
+}
+
+.complete-ring--3 {
+  width: 420px;
+  height: 420px;
+  border-color: rgba(56, 189, 248, 0.04);
+  animation-delay: 0.5s;
+}
+
+@keyframes complete-ring-expand {
+  0%   { transform: scale(0.3); opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* Checkmark icon */
+.complete-icon-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.2rem;
+}
+
+.complete-checkmark {
+  width: 88px;
+  height: 88px;
+  color: #34d399;
+  filter: drop-shadow(0 0 20px rgba(52, 211, 153, 0.4));
+}
+
+.complete-checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: complete-circle-draw 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
+}
+
+.complete-checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: complete-check-draw 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.7s forwards;
+}
+
+@keyframes complete-circle-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes complete-check-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Text */
+.complete-text {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 4rem;
+  animation: complete-text-rise 0.6s ease 0.5s both;
+}
+
+@keyframes complete-text-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.complete-title {
+  font-family: var(--font-montserrat);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: 0.03em;
+  margin-bottom: 1.2rem;
+}
+
+.complete-body {
+  font-size: 1.5rem;
+  font-family: var(--font-montserrat);
+  color: var(--color-muted);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.complete-highlight {
+  color: #34d399;
+  font-weight: 700;
+}
+
+.complete-skipped {
+  color: #f87171;
+}
+
+/* CTA button */
+.complete-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-montserrat);
+  font-size: 1.8rem;
+  color: #080c14;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  border: none;
+  padding: 1.6rem 4rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 0 32px rgba(56, 189, 248, 0.3);
+  transition: all 0.25s ease;
+  animation: complete-btn-appear 0.5s ease 1s both;
+  letter-spacing: 0.03em;
+}
+
+.complete-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.complete-btn:hover {
+  background: linear-gradient(135deg, #67d5fb 0%, #a5b4fc 100%);
+  box-shadow: 0 0 48px rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+}
+
+.complete-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.complete-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes complete-btn-appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
