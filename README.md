@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+#  Quiz Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A modern, scalable Quiz & Assessment Platform built with React 19 + TypeScript.
 
-Currently, two official plugins are available:
+This project started as a quiz engine and is being developed into a full-featured online exam platform.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🔴 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 https://your-vercel-link.vercel.app  
+*(Deploy via Vercel for best performance)*
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🖼 Preview
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+<!-- Add screenshots inside /public/screenshots -->
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![Start Screen](./public/screenshots/start.png)
+![Quiz Screen](./public/screenshots/quiz.png)
+![Result Screen](./public/screenshots/result.png)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## ✨ Current Features
+
+- ⚛ Built with React 19
+- 🟦 Fully typed with TypeScript
+- ⚡ Fast build system using Vite
+- 🧠 State management using useReducer
+- ⏱ Timer-based quiz system
+- 📊 Dynamic progress tracking
+- 🧾 Professional Answer Sheet sidebar
+- 🎯 Smart evaluation after completion
+- 📈 Result analytics view
+- 🎨 Modern sharp-edge UI design
+- 📱 Responsive layout
+
+---
+
+## 📦 Installation
+Clone the repository:
+```bash
+git clone https://github.com/HosseinMst81/quiz-platform.git
+cd quiz-platform
+npm install
+```
+Start development server:
+```bash
+npm run dev
+```
+Start mock API server:
+```bash
+npm run fake_api
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🏗 Architecture
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+State is managed using a centralized reducer pattern for scalability.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```ts
+type State = {
+  questions: Question[];
+  status: "loading" | "error" | "ready" | "active" | "finished";
+  index: number;
+  answers: (number | undefined)[];
+  remainingTime: number;
+};
 ```
+
+| Technology   | Purpose      |
+| ------------ | ------------ |
+| React 19     | UI Library   |
+| TypeScript   | Type Safety  |
+| Vite         | Build Tool   |
+| JSON Server  | Mock Backend |
+| Lucide React | Icons        |
+| ESLint       | Code Quality |
+
+## 📌 Status
+
+### 🟠 Actively in development
+This repository will continue evolving toward a production-ready exam platform.
