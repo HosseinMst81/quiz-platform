@@ -1,8 +1,10 @@
-import { useState } from "react";
 import type { Action } from "../../App";
 
-function ButtonRestartQuiz({dispatch}: {dispatch: React.ActionDispatch<[action: Action]>}) {
-  const [confirmationModal,setConfirmationModal] = useState<boolean>(false)
+function ButtonRestartQuiz({
+  dispatch,
+}: {
+  dispatch: React.ActionDispatch<[action: Action]>;
+}) {
   return (
     <button
       className="btn btn-restart"

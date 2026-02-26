@@ -1,4 +1,4 @@
-import type { Action } from "../App";
+import type { Action } from "../../App";
 
 function PrevButton({
     dispatch,
