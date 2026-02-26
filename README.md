@@ -13,12 +13,26 @@ This project started as a quiz engine and is being developed into a full-feature
 
 ---
 
-## 🖼 Preview
+## 📸 Preview
 
-<!-- Add screenshots inside /public/screenshots -->
+### Start Screen
+Clean overview of quiz details before starting.
 
 ![Start Screen](./public/screenshots/start.png)
+
+---
+
+### Quiz Interface
+Live quiz session with timer and navigation and confirmation at the end
+
 ![Quiz Screen](./public/screenshots/quiz.png)
+![Confirmation Screen](./public/screenshots/confirm.png)
+
+---
+
+### Result Analytics
+Detailed result breakdown with score visualization.
+
 ![Result Screen](./public/screenshots/result.png)
 
 ---
@@ -82,3 +96,4 @@ type State = {
 
 ### 🟠 Actively in development
 This repository will continue evolving toward a production-ready exam platform.
+
