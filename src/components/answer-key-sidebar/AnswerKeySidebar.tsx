@@ -1,15 +1,10 @@
+import { useQuiz } from "../../hooks/useQuize";
 import "./AnswerKeySidebar.css";
-import type { Action, QuestionType } from "../../App";
-
-type Props = {
-  questions: QuestionType[];
-  answers: (number | undefined)[];
-  dispatch: React.ActionDispatch<[action: Action]>;
-};
 
 const letters = ["A", "B", "C", "D"];
 
-function AnswerKeySidebar({ questions, answers, dispatch }: Props) {
+function AnswerKeySidebar() {
+  const { questions, answers, dispatch } = useQuiz();
   return (
     <aside className="answer-key">
       <h4 className="answer-key-title">Answer Sheet</h4>

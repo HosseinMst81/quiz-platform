@@ -1,18 +1,16 @@
-import type { Action } from "../../App";
+import { useQuiz } from "../../hooks/useQuize";
 
-function PrevButton({
-    dispatch,
-  }: {
-    dispatch: React.ActionDispatch<[action: Action]>;
-  }) {
-    return (
-      <button
-        onClick={() => dispatch({ type: "prevQuestion" })}
-        className="btn btn-ui prev"
-      >
-        Prev Question
-      </button>
-    );
-  }
+function PrevButton() {
+  const { dispatch, index } = useQuiz();
+
+  return index !== 0 && (
+    <button
+      onClick={() => dispatch({ type: "prevQuestion" })}
+      className="btn btn-ui prev"
+    >
+      Prev Question
+    </button>
+  );
+}
 
 export default PrevButton;

@@ -1,14 +1,18 @@
+import {
+  ArrowLeftRight,
+  ArrowRight,
+  CircleQuestionMark,
+  ClipboardClock,
+  Flag,
+  LucideTrophy,
+  TrendingUp,
+} from "lucide-react";
+import { useQuiz } from "../../hooks/useQuize";
 import "./StartScreen.css";
-import type { Action } from "../../App";
-import displayTime from "../../utils/displayTime";
-import { ArrowLeftRight, ArrowRight, CircleQuestionMark, ClipboardClock, Flag, LucideTrophy, TrendingUp } from "lucide-react";
 
 type StartScreenProps = {
-  numQuestions: number;
-  dispatch: (action: Action) => void;
-  possiblePoints?: number;
-  timeLimit?: number; // in minutes, omit if untimed
   topics?: string[];
+  timeLimit?: string;
 };
 
 const DEFAULT_TOPICS = [
@@ -18,13 +22,9 @@ const DEFAULT_TOPICS = [
   "Context & Refs",
 ];
 
-function StartScreen({
-  numQuestions,
-  dispatch,
-  possiblePoints = 280,
-  timeLimit,
-  topics = DEFAULT_TOPICS,
-}: StartScreenProps) {
+function StartScreen({ topics = DEFAULT_TOPICS, timeLimit }: StartScreenProps) {
+  const { numQuestions, possiblePoints, dispatch } = useQuiz();
+  
   return (
     <div className={`start-screen--ready`}>
       {/* Ambient glow */}
@@ -50,7 +50,11 @@ function StartScreen({
 
       {/* Stats row */}
       <div className="start-stats">
-        <StatCard icon={<CircleQuestionMark />} value={String(numQuestions)} label="Questions" />
+        <StatCard
+          icon={<CircleQuestionMark />}
+          value={String(numQuestions)}
+          label="Questions"
+        />
         <StatCard
           icon={<LucideTrophy />}
           value={String(possiblePoints)}
@@ -59,7 +63,7 @@ function StartScreen({
         {timeLimit && (
           <StatCard
             icon={<ClipboardClock />}
-            value={displayTime(timeLimit)}
+            value={timeLimit}
             label="Duration"
             dim={!timeLimit}
           />

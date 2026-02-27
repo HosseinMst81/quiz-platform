@@ -1,14 +1,11 @@
-import './Timer.css'
 import { useEffect } from "react";
-import type { Action } from "../../App";
+import { useQuiz } from "../../hooks/useQuize";
 import displayTime from "../../utils/displayTime";
+import "./Timer.css";
 
-type TimerProps = {
-  dispatch: React.ActionDispatch<[action: Action]>;
-  remaningTime: number;
-};
-function Timer({ dispatch, remaningTime }: TimerProps) {
-  const time = displayTime(remaningTime);
+function Timer() {
+  const { dispatch, remaningTime } = useQuiz();
+
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch({ type: "tick" });
@@ -19,7 +16,8 @@ function Timer({ dispatch, remaningTime }: TimerProps) {
     };
   }, [dispatch]);
 
-  return <div className="timer">{time}</div>;
+  if (!remaningTime) return null;
+  return <div className="timer">{displayTime(remaningTime)}</div>;
 }
 
 export default Timer;
