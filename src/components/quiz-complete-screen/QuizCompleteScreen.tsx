@@ -1,18 +1,14 @@
-import {  ArrowRight } from 'lucide-react';
-import './QuizCompleteScreeen.css'
+import { ArrowRight } from "lucide-react";
+import "./QuizCompleteScreeen.css";
 import { useEffect, useState } from "react";
+import { useQuiz } from "../../hooks/useQuize";
 
 type QuizCompleteScreenProps = {
-  answeredCount: number;
-  totalCount: number;
   onViewResults: () => void;
 };
 
-function QuizCompleteScreen({
-  answeredCount,
-  totalCount,
-  onViewResults,
-}: QuizCompleteScreenProps) {
+function QuizCompleteScreen({ onViewResults }: QuizCompleteScreenProps) {
+  const { answeredCount, numQuestions } = useQuiz();
   const [phase, setPhase] = useState<"enter" | "ready">("enter");
 
   useEffect(() => {
@@ -20,10 +16,12 @@ function QuizCompleteScreen({
     return () => clearTimeout(t);
   }, []);
 
-  const skipped = totalCount - answeredCount;
+  const skipped = numQuestions - answeredCount;
 
   return (
-    <div className={`complete-screen ${phase === "ready" ? "complete-screen--ready" : ""}`}>
+    <div
+      className={`complete-screen ${phase === "ready" ? "complete-screen--ready" : ""}`}
+    >
       {/* Burst rings */}
       <div className="complete-burst">
         <div className="complete-ring complete-ring--1" />
@@ -64,7 +62,7 @@ function QuizCompleteScreen({
         <p className="complete-body">
           You answered{" "}
           <strong className="complete-highlight">{answeredCount}</strong> out of{" "}
-          <strong>{totalCount}</strong> questions.
+          <strong>{numQuestions}</strong> questions.
           {skipped > 0 && (
             <>
               {" "}
@@ -79,7 +77,7 @@ function QuizCompleteScreen({
       {/* CTA */}
       <button className="complete-btn" onClick={onViewResults}>
         <span>View Results</span>
-        <ArrowRight/>
+        <ArrowRight />
       </button>
     </div>
   );

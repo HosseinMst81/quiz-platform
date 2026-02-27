@@ -1,25 +1,13 @@
 import { useState } from "react";
-import type { Action, Status } from "../../App";
+import { useQuiz } from "../../hooks/useQuize";
 import FinishConfirmModal from "../finish-modal/FinishConfirmModal";
 
-type NextButtonProps = {
-  status: Status;
-  index: number;
-  numQuestions: number;
-  answeredCount: number;
-  dispatch: React.ActionDispatch<[action: Action]>;
-};
-
-function NextButton({
-  index,
-  dispatch,
-  numQuestions,
-  answeredCount,
-  status,
-}: NextButtonProps) {
+function NextButton() {
+  const { numQuestions, index, dispatch,status } = useQuiz();
   const [showModal, setShowModal] = useState(false);
   const isLast = index === numQuestions - 1;
   const isFinished = status === "finished";
+  
   function handleClick() {
     if (isLast) {
       setShowModal(true);
@@ -46,8 +34,6 @@ function NextButton({
       }
       {showModal && (
         <FinishConfirmModal
-          answeredCount={answeredCount}
-          totalCount={numQuestions}
           onConfirm={handleConfirm}
           onCancel={() => setShowModal(false)}
         />

@@ -1,22 +1,17 @@
-import { TriangleAlert } from 'lucide-react';
-import './FinishConfirmModal.css'
+import { TriangleAlert } from "lucide-react";
+import "./FinishConfirmModal.css";
 import { useEffect, useState } from "react";
+import { useQuiz } from "../../hooks/useQuize";
 
 type FinishConfirmModalProps = {
-  answeredCount: number;
-  totalCount: number;
   onConfirm: () => void;
   onCancel: () => void;
 };
 
-function FinishConfirmModal({
-  answeredCount,
-  totalCount,
-  onConfirm,
-  onCancel,
-}: FinishConfirmModalProps) {
+function FinishConfirmModal({ onConfirm, onCancel }: FinishConfirmModalProps) {
+  const { answeredCount, numQuestions } = useQuiz();
   const [visible, setVisible] = useState(false);
-  const skipped = totalCount - answeredCount;
+  const skipped = numQuestions - answeredCount;
 
   useEffect(() => {
     // Trigger entrance animation on mount
@@ -68,7 +63,7 @@ function FinishConfirmModal({
           </div>
           <div className="modal-stat-divider" />
           <div className="modal-stat modal-stat--total">
-            <span className="modal-stat-value">{totalCount}</span>
+            <span className="modal-stat-value">{numQuestions}</span>
             <span className="modal-stat-label">Total</span>
           </div>
         </div>

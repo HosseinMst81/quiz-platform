@@ -1,10 +1,7 @@
-import type { Action } from "../../App";
+import { useQuiz } from "../../hooks/useQuize";
 
-function ButtonRestartQuiz({
-  dispatch,
-}: {
-  dispatch: React.ActionDispatch<[action: Action]>;
-}) {
+function ButtonRestartQuiz() {
+  const { dispatch } = useQuiz();
   return (
     <button
       className="btn btn-restart"

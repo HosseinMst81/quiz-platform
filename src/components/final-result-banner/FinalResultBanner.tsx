@@ -4,19 +4,11 @@ import {
   BadgeQuestionMark,
   BadgeX,
 } from "lucide-react";
-import type { QuestionType } from "../../App";
+import { useQuiz } from "../../hooks/useQuize";
 import Stat from "../stat/Stat";
 
-type FinalResultBannerProps = {
-  questions: QuestionType[];
-  answers: (number | undefined)[];
-  totalPoints: number;
-};
-function FinalResultBanner({
-  questions,
-  answers,
-  totalPoints,
-}: FinalResultBannerProps) {
+function FinalResultBanner() {
+  const { questions, totalPoints, answers } = useQuiz();
   const maxPoints = questions.reduce((acc, q) => acc + q.points, 0);
   const scorePercent = Math.round((totalPoints / maxPoints) * 100);
   const grade =
@@ -78,7 +70,7 @@ function FinalResultBanner({
           <h2 className="result-hero-title">Quiz Complete</h2>
           <p className="result-hero-sub">
             You scored{" "}
-            <strong style={{ color: grade.color }}>{totalPoints}</strong> out of {" "}
+            <strong style={{ color: grade.color }}>{totalPoints}</strong> out of{" "}
             <strong>{maxPoints}</strong> points
           </p>
           <div className="result-stats">

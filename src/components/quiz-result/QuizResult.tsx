@@ -1,12 +1,7 @@
-import type { QuestionType } from "../../App";
+import { useQuiz } from "../../hooks/useQuize";
 
-type QuizResultProps = {
-  questions: QuestionType[];
-  answers: (number | undefined)[];
-  totalPoints: number;
-};
-
-function QuizResult({ questions, answers }: QuizResultProps) {
+function QuizResult() {
+  const { questions, answers } = useQuiz();
   return (
     <div className="result-container">
       {/* ── Answer Map ── */}

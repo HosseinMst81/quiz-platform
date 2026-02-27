@@ -1,15 +1,13 @@
-import './Options.css'
-import type { Action, QuestionType, Status } from "../../App";
+import { useQuiz } from "../../hooks/useQuize";
+import type { QuestionType } from "../question/Question.type";
+import "./Options.css";
 
 type OptionsProps = {
   question: QuestionType;
-  dispatch: React.Dispatch<Action>;
-  answers: (number | undefined)[];
-  index: number;
-  status: Status;
 };
 
-function Options({ question, dispatch, answers, index, status }: OptionsProps) {
+function Options({ question }: OptionsProps) {
+  const { status, answers, index, dispatch } = useQuiz();
   const isFinished = status === "finished";
   const optionLetter = ["A", "B", "C", "D"];
   return (
